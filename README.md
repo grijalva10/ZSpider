@@ -1,5 +1,5 @@
 # WARNING! EXTREMELY BUGGY!
-# This is only a experimental Web Spider running on Mac OS X.
+This is only a experimental Web Spider running on Mac OS X.
 
 # To do:
 * Content filters
@@ -7,6 +7,6 @@
 * Multi-Threads
 * Optimize log view memory usage
 
-> Contacts
+> Contacts:
 > gmail@peakji.com
 > http://www.peakji.com
