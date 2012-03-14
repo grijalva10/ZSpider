@@ -5,7 +5,7 @@ This is only a experimental Web Spider running on Mac OS X.
 * Content filters
 * <P> importance evaluating
 * Multi-Threads
-* Optimize log view memory usage
+* SQL output
 
 > Contacts:
 > gmail@peakji.com
