@@ -68,20 +68,44 @@ static ZSViewController * _mainView = nil;
     [self.stopButton setEnabled:YES];
     
     [self.spider putToURL:[NSURL URLWithString:url]];
+    
+    [self performSelector:@selector(cleanLog) withObject:nil afterDelay:30.0f];
 }
 
 -(IBAction)stop:(id)sender{
     
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(cleanLog) object:nil];
+    
     if(self.spider)[self.spider kill];
-    [[ZSURLQueue mainQueue].queue removeAllObjects];
+    
     
     [self.startButton setEnabled:YES];
     [self.stopButton setEnabled:NO];
     
     [self.logView insertText:@"-------------------------------------------------------------------------------------\nStopped.\n"];
+    
+    
+    NSSavePanel * savePanel =[NSSavePanel savePanel];
+    
+    [savePanel setRequiredFileType:@"csv"];
+    
+    [savePanel setTitle:@"SaveAsPlainText"];
+    
+    if([savePanel runModal] == NSOKButton){
+        
+        [[[ZSURLQueue mainQueue] getCSVString] writeToURL:[savePanel URL] atomically:YES encoding:NSUTF8StringEncoding error:nil];   
+        
+    }
+    
+    [[ZSURLQueue mainQueue].queue removeAllObjects];
+    [[ZSURLQueue mainQueue].result removeAllObjects];
 }
 
 
+-(void)cleanLog{
+    [self.logView setString:@"===================\nClean Log...\n===================\n"];
+    [self performSelector:@selector(cleanLog) withObject:nil afterDelay:30.0f];
+}
 
 
 @end

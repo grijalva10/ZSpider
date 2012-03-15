@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "ZSURLQueue.h"
+
 @class ZSpider;
 
 @class ZSViewController;
@@ -29,5 +31,8 @@
 
 -(IBAction)start:(id)sender;
 -(IBAction)stop:(id)sender;
+
+
+-(void)cleanLog;
 
 @end

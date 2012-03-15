@@ -17,9 +17,13 @@
 
 @property(nonatomic,strong)NSMutableArray * queue;
 
+@property(nonatomic,strong)NSMutableArray * result;
+
 +(ZSURLQueue *)mainQueue;
 
 -(void)addURL:(NSURL *)url;
 -(BOOL)isNewURL:(NSURL *)url;
+-(void)addResultWithTitle:(NSString *)title andURLString:(NSString *)urlString;
+-(NSString *)getCSVString;
 
 @end

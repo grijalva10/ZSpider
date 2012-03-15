@@ -12,6 +12,7 @@
 
 
 @synthesize queue;
+@synthesize result;
 
 #pragma mark - Init
 
@@ -25,6 +26,7 @@ static ZSURLQueue * _mainQueue = nil;
         if(_mainQueue.queue==nil)
         {
             _mainQueue.queue=[[NSMutableArray alloc] init];
+            _mainQueue.result=[[NSMutableArray alloc] init];
         }
 		return _mainQueue;  
 	}  
@@ -49,6 +51,7 @@ static ZSURLQueue * _mainQueue = nil;
     self = [super init];
     if (self) {
         self.queue=nil;
+        self.result=nil;
     }
     return self;
 }
@@ -72,5 +75,33 @@ static ZSURLQueue * _mainQueue = nil;
     }
     return YES;
 }
+
+-(void)addResultWithTitle:(NSString *)title andURLString:(NSString *)urlString{
+    if(title!=nil&&urlString!=nil)
+    {
+        NSDictionary * dict = [[NSDictionary alloc] initWithObjectsAndKeys:title,@"title",urlString,@"url", nil];
+        
+        [self.result addObject:dict];
+    }
+}
+
+-(NSString *)getCSVString{
+    NSMutableString * res =[[NSMutableString alloc] initWithString:@""];
+    
+    for(int i=0;i<[self.result count];i++)
+    {
+        NSString * title = [[result objectAtIndex:i] objectForKey:@"title"];
+        
+        title=[title stringByReplacingOccurrencesOfString:@"," withString:@" "];
+        
+        [res appendFormat:@"%@,",title];
+        [res appendFormat:@"%@\n",[[result objectAtIndex:i] objectForKey:@"url"]];
+    }
+    
+    return [NSString stringWithString:res];
+
+}
+
+
 
 @end

@@ -47,6 +47,7 @@
     {
         [grabber cancel];
     }
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(grabberDidFinish:withAttribute:) object:nil];
     waitUntilDone=NO;
     progress=0;
 }
@@ -63,7 +64,10 @@
     else
     {
         //Done Queue!
-        [[ZSViewController mainView].logView insertText:@"Done."];
+        [[ZSViewController mainView].logView insertText:@"Done! Checking for unfinished task..."];
+        
+        [self performSelector:@selector(grabberDidFinish:withAttribute:) withObject:nil afterDelay:5.0f];
+        
     }
 }
 
