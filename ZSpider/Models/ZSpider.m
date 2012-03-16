@@ -64,7 +64,7 @@
     else
     {
         //Done Queue!
-        [[ZSViewController mainView].logView insertText:@"Done! Checking for unfinished task..."];
+        [[ZSViewController mainView].logView insertText:@"Checking for unfinished task...\n"];
         
         [self performSelector:@selector(grabberDidFinish:withAttribute:) withObject:nil afterDelay:5.0f];
         

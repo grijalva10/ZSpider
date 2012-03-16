@@ -69,7 +69,7 @@ static ZSViewController * _mainView = nil;
     
     [self.spider putToURL:[NSURL URLWithString:url]];
     
-    [self performSelector:@selector(cleanLog) withObject:nil afterDelay:30.0f];
+    [self performSelector:@selector(cleanLog) withObject:nil afterDelay:15.0f];
 }
 
 -(IBAction)stop:(id)sender{
@@ -103,8 +103,8 @@ static ZSViewController * _mainView = nil;
 
 
 -(void)cleanLog{
-    [self.logView setString:@"===================\nClean Log...\n===================\n"];
-    [self performSelector:@selector(cleanLog) withObject:nil afterDelay:30.0f];
+    [self.logView setString:@"===================\n     Clean Log...\n===================\n"];
+    [self performSelector:@selector(cleanLog) withObject:nil afterDelay:15.0f];
 }
 
 

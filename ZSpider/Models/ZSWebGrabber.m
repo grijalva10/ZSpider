@@ -22,7 +22,7 @@
     currentURL = [url absoluteString];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url
-                                                                cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:60];
+                                                                cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:20.0f];
     
     [request setHTTPMethod:@"GET"];
     
@@ -65,7 +65,10 @@
         {
             
             HTTPRequestDidSuccess=YES;
-        }
+            
+            //Size
+
+        }   
         else
         {
             
